@@ -1,0 +1,13 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: bindings-policy-demo-on-aws
+  namespace: custom-policies
+placementRef:
+  name: placementrule-on-aws
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: policy-demo
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
