@@ -29,6 +29,6 @@ spec:
                 metadata:
                   name: cluster
                 spec:
-                  mastersSchedulable: true
+                  mastersSchedulable: false
                   policy:
                     name: ""
