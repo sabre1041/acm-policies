@@ -1,0 +1,12 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-policy-disable-master-scheduling
+placementRef:
+  name: placement-policy-disable-master-scheduling
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: policy-disable-master-scheduling
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
