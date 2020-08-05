@@ -37,7 +37,7 @@ spec:
                   - infra
               nodeSelector:
                 matchLabels:
-                  node-role.kubernetes.io/worker: "" # testing 
+                  node-role.kubernetes.io/infra: "" # testing 
         remediationAction: enforce
         severity: low
   remediationAction: enforce
