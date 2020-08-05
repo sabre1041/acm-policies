@@ -17,11 +17,11 @@ spec:
         metadata:
           name: policy-label-infra-nodes
         spec:
-          remediationAction: inform
           severity: medium
           namespaceSelector:
-            exclude: [""]
-            include: ["*"]
+            exclude: []
+            include:
+              - "default"
           object-templates:
             - complianceType: musthave
               objectDefinition:
@@ -31,11 +31,11 @@ spec:
                 metadata:
                     labels:
                       node-role.kubernetes.io/infra: ""
-            - complianceType: mustnothave
-              objectDefinition:
-                apiVersion: v1
-                kind: Node
-                name: infra1
-                metadata:
-                    labels:
-                      node-role.kubernetes.io/worker: ""
+            #- complianceType: mustnothave
+            #  objectDefinition:
+            #    apiVersion: v1
+            #    kind: Node
+            #    name: infra1
+            #    metadata:
+            #        labels:
+            #          node-role.kubernetes.io/worker: ""
