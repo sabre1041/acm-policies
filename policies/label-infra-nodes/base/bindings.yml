@@ -1,0 +1,13 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-policy-label-infra-nodes
+  namespace: custom-policies
+placementRef:
+  name: placement-policy-label-infra-nodes
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: policy-label-infra-nodes
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
