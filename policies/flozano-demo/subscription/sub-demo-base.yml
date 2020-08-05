@@ -4,7 +4,7 @@ metadata:
   name: acm-policies-demo
   namespace: custom-policies
   labels:
-    subscription-pause: “false”
+    subscription-pause: "false"
   annotations:
     apps.open-cluster-management.io/github-path: policies/flozano-demo/base
     apps.open-cluster-management.io/github-branch: flozano-demo
@@ -16,3 +16,7 @@ spec:
 # Can I run this without kustomization and overlays?
 # Looks like I need at least a kustomization
 # And the slides provide me with no instructions to apply my files. Or is it just oc apply -k ?
+# Instructions in the README from github? 
+# After all the nice web app, I am disapointed with having to use the CLI ;-)
+# Only once I saw my channel on the Web UI and it disapeared misteriously. I cannot see my appsub on the Web UI
+
