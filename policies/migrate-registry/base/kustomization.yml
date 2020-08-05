@@ -1,0 +1,4 @@
+resources:
+- policy-migrate-registry.yaml
+- placementrule.yml
+- bindings.yml
