@@ -1,0 +1,54 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-oauth-ldap
+  namespace: custom-policies
+  annotations:
+    policy.open-cluster-management.io/categories: PR.IP Information Protection Processes and Procedures
+    policy.open-cluster-management.io/controls: PR.IP-1 Baseline Configuration
+    policy.open-cluster-management.io/standards: NIST-CSF
+spec:
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: policy-oauth-ldap-mem-limit-range
+        spec:
+          namespaceSelector:
+            exclude:
+              - kube-*
+            include:
+              - default
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: config.openshift.io/v1
+                kind: OAuth
+                metadata:
+                  name: cluster
+                spec:
+                  identityProviders:
+                    - name: LDAP
+                      ldap:
+                        attributes:
+                          name:
+                            - cn
+                          email:
+                            - mail
+                          id:
+                            - dn
+                          preferredUsername:
+                            - sAMAccountName
+                        bindDN: 'CN=svc-ocp-ldap,OU=service accounts,DC=example,DC=com'
+                        bindPassword:
+                          name: ldap-secret
+                        insecure: false
+                        url: >-
+                          ldap://myldap.example.com/dc=example,dc=com?sAMAccountName?sub?(memberOf=CN=openshift-users,OU=groups,DC=example,DC=com)
+                      mappingMethod: claim
+                      type: LDAP
+          remediationAction: inform
+          severity: medium
+  remediationAction: inform
