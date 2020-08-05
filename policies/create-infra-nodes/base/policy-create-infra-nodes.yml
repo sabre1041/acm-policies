@@ -8,7 +8,7 @@ metadata:
   #  policy.open-cluster-management.io/categories: 
   #  policy.open-cluster-management.io/controls: 
 spec:
-  remediationAction: inform
+  remediationAction: enforce
   disabled: false
   policy-templates:
     - objectDefinition:
@@ -83,6 +83,130 @@ spec:
                             - name: tag:Name
                               values:
                               - cluster-global-ad3e-pbtzp-private-us-east-2a
+                          userDataSecret:
+                            name: worker-user-data
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: machine.openshift.io/v1beta1
+                kind: MachineSet
+                metadata:
+                  labels:
+                    machine.openshift.io/cluster-api-cluster: cluster-global-ad3e-pbtzp
+                  name: cluster-global-ad3e-pbtzp-infra-us-east-2b
+                  namespace: openshift-machine-api
+                spec:
+                  replicas: 1
+                  selector:
+                    matchLabels:
+                      machine.openshift.io/cluster-api-cluster: cluster-global-ad3e-pbtzp
+                      machine.openshift.io/cluster-api-machineset: cluster-global-ad3e-pbtzp-infra-us-east-2b
+                  template:
+                    metadata:
+                      labels:
+                        machine.openshift.io/cluster-api-cluster: cluster-global-ad3e-pbtzp
+                        machine.openshift.io/cluster-api-machine-role: worker
+                        machine.openshift.io/cluster-api-machine-type: worker
+                        machine.openshift.io/cluster-api-machineset: cluster-global-ad3e-pbtzp-infra-us-east-2b
+                    spec:
+                      metadata:
+                        labels:
+                          node-role.kubernetes.io/infra: ""
+                      providerSpec:
+                        value:
+                          ami:
+                            id: ami-070c6257b10036038
+                          apiVersion: awsproviderconfig.openshift.io/v1beta1
+                          blockDevices:
+                          - ebs:
+                              iops: 0
+                              volumeSize: 120
+                              volumeType: gp2
+                          credentialsSecret:
+                            name: aws-cloud-credentials
+                          deviceIndex: 0
+                          iamInstanceProfile:
+                            id: cluster-global-ad3e-pbtzp-worker-profile
+                          instanceType: m5.xlarge
+                          kind: AWSMachineProviderConfig
+                          metadata:
+                            creationTimestamp: null
+                          placement:
+                            availabilityZone: us-east-2b
+                            region: us-east-2
+                          publicIp: null
+                          securityGroups:
+                          - filters:
+                            - name: tag:Name
+                              values:
+                              - cluster-global-ad3e-pbtzp-worker-sg
+                          subnet:
+                            filters:
+                            - name: tag:Name
+                              values:
+                              - cluster-global-ad3e-pbtzp-private-us-east-2b
+                          userDataSecret:
+                            name: worker-user-data
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: machine.openshift.io/v1beta1
+                kind: MachineSet
+                metadata:
+                  labels:
+                    machine.openshift.io/cluster-api-cluster: cluster-global-ad3e-pbtzp
+                  name: cluster-global-ad3e-pbtzp-infra-us-east-2c
+                  namespace: openshift-machine-api
+                spec:
+                  replicas: 1
+                  selector:
+                    matchLabels:
+                      machine.openshift.io/cluster-api-cluster: cluster-global-ad3e-pbtzp
+                      machine.openshift.io/cluster-api-machineset: cluster-global-ad3e-pbtzp-infra-us-east-2c
+                  template:
+                    metadata:
+                      labels:
+                        machine.openshift.io/cluster-api-cluster: cluster-global-ad3e-pbtzp
+                        machine.openshift.io/cluster-api-machine-role: worker
+                        machine.openshift.io/cluster-api-machine-type: worker
+                        machine.openshift.io/cluster-api-machineset: cluster-global-ad3e-pbtzp-infra-us-east-2c
+                    spec:
+                      metadata:
+                        labels:
+                          node-role.kubernetes.io/infra: ""
+                      providerSpec:
+                        value:
+                          ami:
+                            id: ami-070c6257b10036038
+                          apiVersion: awsproviderconfig.openshift.io/v1beta1
+                          blockDevices:
+                          - ebs:
+                              iops: 0
+                              volumeSize: 120
+                              volumeType: gp2
+                          credentialsSecret:
+                            name: aws-cloud-credentials
+                          deviceIndex: 0
+                          iamInstanceProfile:
+                            id: cluster-global-ad3e-pbtzp-worker-profile
+                          instanceType: m5.xlarge
+                          kind: AWSMachineProviderConfig
+                          metadata:
+                            creationTimestamp: null
+                          placement:
+                            availabilityZone: us-east-2c
+                            region: us-east-2
+                          publicIp: null
+                          securityGroups:
+                          - filters:
+                            - name: tag:Name
+                              values:
+                              - cluster-global-ad3e-pbtzp-worker-sg
+                          subnet:
+                            filters:
+                            - name: tag:Name
+                              values:
+                              - cluster-global-ad3e-pbtzp-private-us-east-2c
                           userDataSecret:
                             name: worker-user-data
 
