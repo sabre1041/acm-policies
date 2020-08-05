@@ -1,0 +1,36 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-flozano-demo
+  annotations:
+    policy.open-cluster-management.io/standards:
+    policy.open-cluster-management.io/categories:
+    policy.open-cluster-management.io/controls:
+spec:
+  remediationAction: inform
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: policy-demo-namespaces
+        spec:
+          remdiationAction: inform
+          severity: low
+          namespaceSelector:
+            exclude: ["kube-*"]
+            include: ["custom-policies"]
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: v1             
+                kind: Namespace
+                metadata:
+                  name: flozano-project-one
+            - complianceType: mustnothave
+              objectDefinition:
+                apiVersion: v1
+                kind: Namespace
+                metadata:
+                  name: flozano-project-two

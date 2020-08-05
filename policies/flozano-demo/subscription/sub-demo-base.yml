@@ -1,0 +1,18 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: acm-policies-demo
+  namespace: custom-policies
+  labels:
+    subscription-pause: “false”
+  annotations:
+    apps.open-cluster-management.io/github-path: policies/flozano-demo/base
+    apps.open-cluster-management.io/github-branch: flozano-demo
+spec:
+  channel: custom-policies/acm-gitops-github
+  placement:
+    local: true
+
+# Can I run this without kustomization and overlays?
+# Looks like I need at least a kustomization
+# And the slides provide me with no instructions to apply my files. Or is it just oc apply -k ?
