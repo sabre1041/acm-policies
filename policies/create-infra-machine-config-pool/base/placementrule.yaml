@@ -1,7 +1,7 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: placement-policy-disable-master-scheduling
+  name: placement-policy-create-infra-machine-config-pool
 spec:
   clusterSelector:
     matchExpressions:
