@@ -28,10 +28,9 @@ spec:
             metadata:
               name: default
             spec:
-              nodePlacement:
-                nodeSelector:
-                  matchLabels:
-                    node-role.kubernetes.io/infra: "" 
+              nodeSelector:
+                matchLabels:
+                  node-role.kubernetes.io/dev: "" # testing 
         remediationAction: enforce
         severity: low
   remediationAction: enforce
