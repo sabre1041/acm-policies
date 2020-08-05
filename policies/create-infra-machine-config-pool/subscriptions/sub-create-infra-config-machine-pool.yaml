@@ -1,7 +1,7 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
 metadata:
-  name: acm-policies-example-base
+  name: acm-policies-create-infra-mcp
   namespace: custom-policies
   labels:
     subscription-pause: "false"
