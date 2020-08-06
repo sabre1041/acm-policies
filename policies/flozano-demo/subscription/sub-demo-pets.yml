@@ -11,7 +11,7 @@ spec:
   placement:
     placementRef:
       kind: PlacementRule
-      name: placement-policy-example
+      name: placementrule-on-man
       apiGroup: apps.open-cluster-management.io
   timewindow:
     windowtype: "active"

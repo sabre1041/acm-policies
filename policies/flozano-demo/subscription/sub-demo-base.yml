@@ -13,7 +13,7 @@ spec:
   placement:
     placementRef:
       kind: PlacementRule
-      name: placement-policy-example
+      name: placementrule-on-man
       apiGroup: apps.open-cluster-management.io
 # Can I run this without kustomization and overlays?
 # Looks like I need at least a kustomization
