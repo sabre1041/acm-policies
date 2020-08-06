@@ -1,0 +1,55 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  annotations:
+    policy.open-cluster-management.io/categories: ""
+    policy.open-cluster-management.io/controls: ""
+    policy.open-cluster-management.io/standards: ""
+  name: policy-migrate-metrics
+spec:
+  disabled: false
+  policy-templates:
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: policy-migrate-metrics
+      spec:
+        namespaceSelector:
+          exclude:
+          - kube-*
+          include:
+          - openshift-monitoring
+        object-templates:
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: v1
+            kind: ConfigMap
+            metadata:
+              name: cluster-monitoring-config
+            data:
+              config.yaml: |+
+                alertmanagerMain:
+                  nodeSelector:
+                    node-role.kubernetes.io/infra: ""
+                prometheusK8s:
+                  nodeSelector:
+                    node-role.kubernetes.io/infra: ""
+                prometheusOperator:
+                  nodeSelector:
+                    node-role.kubernetes.io/infra: ""
+                grafana:
+                  nodeSelector:
+                    node-role.kubernetes.io/infra: ""
+                k8sPrometheusAdapter:
+                  nodeSelector:
+                    node-role.kubernetes.io/infra: ""
+                kubeStateMetrics:
+                  nodeSelector:
+                    node-role.kubernetes.io/infra: ""
+                telemeterClient:
+                  nodeSelector:
+                    node-role.kubernetes.io/infra: ""
+        remediationAction: enforce
+        severity: low
+  remediationAction: enforce

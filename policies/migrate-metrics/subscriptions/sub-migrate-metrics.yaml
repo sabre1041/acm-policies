@@ -1,0 +1,14 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: acm-policies-migrate-metrics
+  namespace: custom-policies
+  labels:
+    subscription-pause: "false"
+  annotations:
+    apps.open-cluster-management.io/github-path: policies/migrate-metrics/base
+    apps.open-cluster-management.io/github-branch: migrate-metrics
+spec:
+  channel: custom-policies/acm-gitops-github
+  placement:
+    local: true
