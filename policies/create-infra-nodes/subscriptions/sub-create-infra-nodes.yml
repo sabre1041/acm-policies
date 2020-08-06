@@ -1,0 +1,15 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: acm-policies-create-infra-nodes
+  namespace: custom-policies
+  labels:
+    subscription-pause: "false"
+  annotations:
+    apps.open-cluster-management.io/github-path: policies/create-infra-nodes/base
+    apps.open-cluster-management.io/github-branch: create-infra-nodes
+spec:
+  channel: custom-policies/acm-gitops-github
+  placement:
+    local: true
+
