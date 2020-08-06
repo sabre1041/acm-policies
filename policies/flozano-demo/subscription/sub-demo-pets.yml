@@ -12,7 +12,8 @@ spec:
     placementRef:
       kind: PlacementRule
       name: placement-policy-example
-      apiGroup: apps.open-cluster-management.io  timewindow:
+      apiGroup: apps.open-cluster-management.io
+  timewindow:
     windowtype: "active"
     location: "America/Los_Angeles"
     daysofweek: [ "Wednesday", "Thursday","Friday" ]
