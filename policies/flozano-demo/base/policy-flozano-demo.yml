@@ -2,6 +2,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
   name: policy-flozano-demo
+  # Do I need namespace here, like for bindings and placement rules?
   annotations:
     policy.open-cluster-management.io/standards:
     policy.open-cluster-management.io/categories:
