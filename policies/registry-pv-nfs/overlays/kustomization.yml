@@ -1,0 +1,13 @@
+bases:
+- ../base
+patchesJson6902:
+  - target:
+      version: imageregistry.operator.openshift.io/v1
+      kind: Config
+      name: cluster
+    path: registry-pvc.yaml
+  - target:
+      version: v1
+      kind: PersistentVolume
+      name: registry-pv
+    path: registry-pv-nfs.yaml

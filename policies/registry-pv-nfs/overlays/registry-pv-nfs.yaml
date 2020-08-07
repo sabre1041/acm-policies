@@ -1,0 +1,11 @@
+- op: add
+  path: /spec 
+  value: 
+    capacity:
+      storage: 100Gi
+    accessModes:
+      - ReadWriteMany
+    nfs:
+      path: /
+      server: nfs.test
+    persistentVolumeReclaimPolicy: Retain
