@@ -1,4 +1,4 @@
 resources:
 - policy-flozano-demo.yml
-- placementrule.yml
+- placement-rule.yml
 - bindings.yml
