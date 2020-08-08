@@ -11,10 +11,7 @@ metadata:
 spec:
   channel: custom-policies/acm-gitops-github
   placement:
-    placementRef:
-      kind: PlacementRule
-      name: placementrule-on-man
-      apiGroup: apps.open-cluster-management.io
+    local: true
 # Can I run this without kustomization and overlays?
 # Looks like I need at least a kustomization
 # And the slides provide me with no instructions to apply my files. Or is it just oc apply -k ?
