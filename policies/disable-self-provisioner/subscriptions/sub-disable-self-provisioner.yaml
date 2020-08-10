@@ -6,7 +6,7 @@ metadata:
   labels:
     subscription-pause: "false"
   annotations:
-    apps.open-cluster-management.io/github-path: policies/disable-self-provisioner/overlays
+    apps.open-cluster-management.io/github-path: policies/disable-self-provisioner/base
     apps.open-cluster-management.io/github-branch: disable-self-provisioner
 spec:
   channel: custom-policies/acm-gitops-github
