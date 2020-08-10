@@ -34,7 +34,7 @@ spec:
                   kind: ClusterRole
                   name: self-provisioner
                 subjects: []
-                groupNames: []
+                groupNames: null
           remediationAction: enforce
           severity: low
   remediationAction: enforce
