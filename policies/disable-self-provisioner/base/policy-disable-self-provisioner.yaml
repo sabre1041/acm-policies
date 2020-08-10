@@ -33,7 +33,7 @@ spec:
                   apiGroup: rbac.authorization.k8s.io
                   kind: ClusterRole
                   name: self-provisioner
-                subjects: []
+                subjects: null
           remediationAction: enforce
           severity: low
   remediationAction: enforce
