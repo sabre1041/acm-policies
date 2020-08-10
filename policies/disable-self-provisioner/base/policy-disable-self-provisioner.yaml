@@ -21,19 +21,12 @@ spec:
             include:
               - default
           object-templates:
-            - complianceType: mustonlyhave
+            - complianceType: musthave
               objectDefinition:
                 apiVersion: rbac.authorization.k8s.io/v1
                 kind: ClusterRoleBinding
                 metadata:
-                  annotations:
-                    rbac.authorization.kubernetes.io/autoupdate: "false"
                   name: self-provisioners
-                roleRef:
-                  apiGroup: rbac.authorization.k8s.io
-                  kind: ClusterRole
-                  name: self-provisioner
-                subjects: null
-          remediationAction: enforce
+          remediationAction: inform
           severity: low
-  remediationAction: enforce
+  remediationAction: inform
