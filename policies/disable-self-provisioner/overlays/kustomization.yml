@@ -5,5 +5,5 @@ patchesJson6902:
       group: rbac.authorization.k8s.io
       version: v1
       kind: ClusterRoleBinding
-      name: cluster
+      name: self-provisioners
     path: self-provisioners-clusterrolebinding.yaml
